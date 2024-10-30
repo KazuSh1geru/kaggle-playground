@@ -1,0 +1,86 @@
+## 前提:
+各タスクは、次の2つのフィールドを持つ辞書で構成されています：
+
+"train": デモンストレーションの入力/出力ペアのリスト。
+"test": モデルが出力を予測すべきテスト入力。
+「ペア」は、以下の2つのフィールドを持つ辞書です：
+
+"input": ペアの入力グリッド。
+"output": ペアの出力グリッド。
+「グリッド」は、0から9までの整数からなる長方形の行列（リストのリスト）です。
+
+## 解法ステップ:
+1. 訓練データの徹底的な分析:
+
+- 入力と出力のグリッドサイズ、形状、色の配置など、細部まで観察します。
+- 入力と出力の間にある共通のパターンや変換ルールを見つけます。
+2. 複数の仮説の立案:
+
+- 観察結果に基づいて、考えられる変換ルールの仮説を5つ以上立てます。
+- 仮説は、一般化可能なものや例外的なケースにも対応できるものを含めます。
+- 変換の種類を適宜参考にしてください。
+
+3. 最適な仮説の選択:
+
+- 立てた仮説の中から、訓練データ全体に最も一貫して適用できる2つの仮説を選びます。
+- 仮説が過度に特定の事例に依存していないか確認します。
+4. テストデータへの適用:
+
+- 選択した仮説をテストデータの入力に適用し、対応する出力を生成します。
+- 出力は、テスト入力の構造と選択した仮説に基づいて作成します。
+5. 結果の検証と調整:
+
+- 生成した出力が妥当かどうかを検証します。
+- 必要に応じて仮説を修正し、再度適用します。
+
+## アウトプットポリシー:
+- 回答は2つの予測出力を提示してください。
+- 各予測出力は、テスト入力に対するあなたの仮説に基づいたものである必要があります。
+
+## 変換の種類:
+- **Geometry**
+    - do nothing
+    - rotate / mirror / shift image
+    - crop image background
+    - draw border
+
+
+- **Objects**
+    - rotate / mirror / shirt objects
+    - move two objects together
+    - move objects to edge
+    - extend / repeat an object
+    - delete an object
+    - count unique objects and select the object that appears the most times
+    - create pattern based on image colors
+    - overlay object
+    - replace objects
+
+
+- **Coloring**
+    - select colors for objects
+    - select dominant/smallest color in image
+    - denoise
+    - fill in empty spaces
+
+
+- **Lines**
+    - color edges
+    - extrapolate a straight/diagonal line
+    - draw a line between two dots / or inersections between such lines
+    - draw a spiral
+
+
+- **Grids**
+    - select grid squares with most pixels
+
+
+- **Patterns**
+    - complete a symmetrical/repeating pattern 
+
+
+- **Subtasks**
+    - object detection / cohesion / seperation
+    - object persistance
+    - counting or sorting objects
+
