@@ -1,0 +1,64 @@
+trainデータのinput, outputのペア、は共通の法則に従って変換されています。前提や考え方を踏まえて、共通の法則を導いてください。
+
+## 前提
+
+各タスクは、次の2つのフィールドを持つ辞書で構成されています：
+ "train": デモンストレーションの入力/出力ペアのリスト（通常は3つのペア）。
+ "test": モデルが出力を予測すべきテスト入力。
+
+「ペア」は、以下の2つのフィールドを持つ辞書です：
+
+- "input": ペアの入力グリッド。
+- "output": ペアの出力グリッド。
+
+「グリッド」は、0から9までの整数（含む）からなる長方形の行列（リストのリスト）です。最小サイズは1x1、最大サイズは30x30です。
+
+## 変換例:
+- Geometry
+    - do nothing
+    - rotate / mirror / shift image
+    - crop image background
+    - draw border
+
+- Objects
+    - rotate / mirror / shirt objects
+    - move two objects together
+    - move objects to edge
+    - extend / repeat an object
+    - delete an object
+    - count unique objects and select the object that appears the most times
+    - create pattern based on image colors
+    - overlay object
+    - replace objects
+
+
+- Coloring
+    - select colors for objects
+    - select dominant/smallest color in image
+    - denoise
+    - fill in empty spaces
+
+
+- Lines
+    - color edges
+    - extrapolate a straight/diagonal line
+    - draw a line between two dots / or inersections between such lines
+    - draw a spiral
+
+
+- Grids
+    - select grid squares with most pixels
+
+
+- Patterns
+    - complete a symmetrical/repeating pattern 
+
+
+- Subtasks
+    - object detection / cohesion / seperation
+    - object persistance
+    - counting or sorting objects
+
+
+
+## train
